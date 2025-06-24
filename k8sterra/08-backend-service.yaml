@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: cloudops-demo
+  annotations:
+    #alb.ingress.kubernetes.io/healthcheck-path: /health
+  labels:
+    app: backend
+    tier: backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+  selector:
+    app: backend
